@@ -1,0 +1,211 @@
+@import "../../../node_modules/@jobFitment/surveyjs-editor/surveyeditor.css";
+app-jf-survey-editor .svd_notopbottompaddings>.nav-tabs {
+    margin-top: 0px;
+}
+
+app-jf-survey-editor .svd_object_editor {
+    width: fit-content;
+}
+
+app-jf-survey-editor .svd_pages_editor>.nav-tabs {
+    margin-top: 10px;
+}
+
+
+/* // whitelabele  */
+
+.svd_container .svd_actions .btn.btn-primary {
+    background-color: #1b8bc9 !important;
+    border-color: #1b8bc9 !important
+}
+
+.svd_container .svd_actions .btn.btn-primary:hover {
+    background-color: #EE7C21 !important;
+    border-color: #EE7C21 !important
+}
+
+.svd_container .svd_content .svd_survey_designer .svd_editors .svd_questions_editor .panel-body .svd_question .svd_question_menu .dropdown-toggle {
+    background-color: transparent!important
+}
+
+app-jf-survey-editor .nav-tabs>li>a {
+    border-top: 0px !important
+}
+
+app-jf-survey-editor .svd_container .svd_content .svd_survey_designer .svd_editors .svd_pages_editor .nav-tabs li.active .svd_page_nav {
+    color: #ee7c22 !important;
+    border-top: 1px solid #e7eaec !important;
+    border-radius: 3px;
+    background: #F5F5F5;
+}
+
+app-jf-survey-editor .svd_container .svd_content .svd_survey_designer .svd_editors .svd_pages_editor .nav-tabs li.active .svd_page_nav:hover {
+    color: #ee7c22 !important;
+    border-top: 1px solid #e7eaec !important;
+    border-radius: 3px;
+    background: #F5F5F5 !important;
+}
+
+app-jf-survey-editor .nav-tabs>li.active>a,
+.nav-tabs>li.active>a:hover,
+.nav-tabs>li.active>a:focus,
+.nav-tabs>.dropdown.active.open>a:hover {
+    color: #ee7c22 !important;
+    border-top: 1px solid #e7eaec !important;
+    border-radius: 3px !important;
+    background: #F5F5F5 !important;
+}
+
+app-jf-survey-editor .nav-tabs>li>a:hover {
+    color: #ee7c22 !important;
+    border-top: 1px solid #e7eaec !important;
+    border-radius: 3px !important;
+    background: #F5F5F5 !important;
+}
+
+app-jf-survey-editor .nav-tabs>li.active>a {
+    color: #ee7c22 !important;
+    border-top: 1px solid #e7eaec !important;
+    border-radius: 3px !important;
+    background: #F5F5F5 !important;
+}
+
+app-jf-survey-editor .nav-tabs>li.active>.svd_page_nav,
+.nav-tabs>li.active>.svd_page_nav:hover,
+.nav-tabs>li.active>.svd_page_nav:focus,
+.nav-tabs>.dropdown.active.open>.svd_page_nav:hover {
+    color: #ee7c22 !important;
+    border-top: 1px solid #e7eaec !important;
+    border-radius: 3px !important;
+    background: #F5F5F5 !important;
+}
+
+app-jf-survey-editor .svd_container .svd_content .svd_survey_designer app-jf-survey-editor .svd_editors .svd_pages_editor .nav-tabs li.active .svd_page_nav {
+    color: #ee7c22 !important
+}
+
+app-jf-survey-editor .svd_container .svd_menu>li.active>a {
+    color: #ee7c22 !important
+}
+
+app-jf-survey-editor .svd_container .svd_q_selected {
+    border: 1px solid #EE7C21 !important
+}
+
+app-jf-survey-editor .btn-primary:focus {
+    background-color: #EE7C21 !important;
+    border-color: #ee7c22 !important
+}
+
+app-jf-survey-editor .btn-primary:hover {
+    background-color: #EE7C21 !important;
+    border-color: #ee7c22 !important
+}
+
+app-jf-survey-editor .btn-primary:active {
+    background-color: #EE7C21 !important;
+    border-color: #ee7c22 !important
+}
+
+app-jf-survey-editor .btn-primary {
+    background-color: #1b8bc9 !important;
+    border-color: #198AC9 !important
+}
+
+app-jf-survey-editor .svd_container .svd_content .svd_survey_designer .svd_editors .svd_questions_editor .panel-body app-jf-survey-editor .svd_question .svd_question_menu .dropdown-toggle {
+    background-color: transparent !important
+}
+
+app-jf-survey-editor .svd_container .svd_content .svd_survey_designer .svd_editors .svd_questions_editor .panel-body .svd_question .svd_question_menu .dropdown-toggle .glyphicon-option-horizontal {
+    color: #198AC9 !important
+}
+
+app-jf-survey-editor .svd_container .svd_content .svd_survey_designer .svd_editors .svd_questions_editor .panel-body .svd_question .svd_question_menu .dropdown-toggle .glyphicon-option-horizontal:hover {
+    color: #ee7c22 !important
+}
+
+app-jf-survey-editor .btn-toolbar>.btn-success {
+    background-color: #1b8bc9 !important;
+    border-color: #198AC9 !important
+}
+
+app-jf-survey-editor .btn-toolbar>.btn-success:hover {
+    background-color: #EE7C21 !important;
+    border-color: #ee7c22 !important
+}
+
+app-jf-survey-editor .btn-toolbar>.btn-danger {
+    background-color: #1b8bc9 !important;
+    border-color: #198AC9 !important
+}
+
+app-jf-survey-editor .btn-toolbar>.btn-danger:hover {
+    background-color: #EE7C21 !important;
+    border-color: #ee7c22 !important
+}
+
+// app-jf-survey-editor .svd_question {
+//   height: 170px !important;
+// }
+app-jf-survey-editor #surveyquestioneditorwindow {
+    overflow: auto;
+}
+
+app-jf-survey-editor .nav-tabs,
+.nav-tabs.nav-justified {
+    margin-top: 0px !important;
+}
+
+app-jf-survey-editor .panel-group {
+    width: 1000px !important;
+}
+
+app-jf-survey-editor .modal-content {
+    width: 1400px !important;
+    margin-left: -359px !important;
+    height: auto;
+}
+
+app-jf-survey-editor .card {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 8px 0px;
+    box-sizing: border-box;
+    border-radius: 2px;
+    background: white;
+    width: 100%;
+    text-align: initial;
+    padding: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    max-height: 500px;
+}
+
+app-jf-survey-editor .textClass {
+    font-size: medium;
+    text-align: center;
+}
+
+app-jf-survey-editor .resultClass {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #1b8bc9;
+    min-height: 150px !important;
+    background-color: whitesmoke;
+}
+
+app-jf-survey-editor .sourceClass {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #ee7d22;
+    min-height: 150px !important;
+    background-color: whitesmoke;
+}
+
+app-jf-survey-editor .responseTextClass {
+    color: #050505;
+    padding: 10px;
+    font-size: larger;
+    width: 70%;
+    word-break: break-all;
+}

@@ -1,0 +1,36 @@
+@import '~angular-tree-component/dist/angular-tree-component.css';
+
+.disable {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.node-content-wrapper-active,
+.node-content-wrapper-active.node-content-wrapper-focused,
+.node-content-wrapper.node-content-wrapper-active:hover {
+  background: none;
+}
+
+.node-content-wrapper-active,
+.node-content-wrapper-focused,
+.node-content-wrapper:hover {
+  box-shadow: none;
+}
+
+.node-content-wrapper-active.node-content-wrapper-focused,
+.node-content-wrapper.node-content-wrapper-active:hover {
+  background: none !important;
+}
+
+.node-content-wrapper-focused {
+  background: none !important;
+}
+
+.node-content-wrapper:hover {
+  background: none !important;
+}
+
+.error {
+  padding: 5px;
+  border-radius: 4px;
+}

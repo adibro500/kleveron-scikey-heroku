@@ -1,0 +1,16 @@
+<div class="main-div">
+    <ng-container *ngFor="let card of cards;let idx=index">
+      <ng-container *ngIf="card!==null && card!==undefined">
+    <mat-card class="z-depth center" flex="20" >
+        <mat-card-header>
+           
+          
+          </mat-card-header>
+          <a [routerLink]='card.link'>{{card.text}}</a>
+        </mat-card>
+    </ng-container>
+    </ng-container>
+   
+  </div>
+  
+  

@@ -1,0 +1,1328 @@
+
+
+<link rel="stylesheet" [href]="changeC | safe">
+
+<div class="own_cntrl_list" id="own_contrl_list">
+    
+    <div class="con_hdr">
+    
+        <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+        <h4 class="sltcntrl" translate>
+            Select Control
+        </h4>
+        <div class="lbl_select_opt">
+                <div class="custom_chk_bx">
+                    <div class="chk_bx chk_top">
+                        <input id="chkcnt1" name="" type="checkbox" [(ngModel)]="lbl_chk" (click)="lblSet()">
+                        <label for="chkcnt1">With label?</label>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+
+    
+    <div class="all_con_wrap">
+        <ul [dragula]='"bag-one"' [dragulaModel]="group1" id="left">
+            <li *ngFor="let tb of group1" class="cntrl_col">
+                <div class="col_div">
+                    <span class="col_img">
+                        <img src="./assets/images/crt-controls/{{tb.img}}.png" alt="">
+                    </span>
+                    <span class="col_lbl">{{tb.label}}</span>
+                </div>
+            </li>
+    
+            <div class="clearfix"></div>
+        </ul>
+    </div>
+    </div>
+    
+    <div class="row page_header">
+     
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 add_cntrl_hdr">
+            <h2 class="head">
+                <label>
+                    {{temp_name}} Form
+                </label>
+            </h2>
+        </div>
+        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 add_own_cntrl">
+            <span class="add_col_btn">
+                <button class="btn btn1">
+                    <span class="col_icon"><img src="./assets/images/col-1.png" alt="" (click)="addStyleSheet('cols-1')"/></span>
+                    <span class="col_icon"><img src="./assets/images/col-2.png" alt="" (click)="addStyleSheet('cols-2')"/></span>
+                    <span class="col_icon"><img src="./assets/images/col-3.png" alt="" (click)="addStyleSheet('cols-3')"/></span>
+                    <span class="col_icon"><img src="./assets/images/col-4.png" alt="" (click)="addStyleSheet('cols-4')"/></span>
+                    <span class="col_text">Customize Colum</span>
+                </button>
+            </span>
+            <!-- <col-config></col-config> -->
+            <span class="add_control_btn">
+                <button type="button" class="btn btn2" (click)="SelectControlNav()" id="add_new_control"><span class="fa fa-plus"></span>Add</button>
+            </span>
+            <span>
+                <img src="./assets/images/on-boarding/onbrd-icon.png" class="icon-img pull-right" />
+            </span>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- <div class="row own_cntrl_list" style="display:none">
+    
+                        <div class="table-responsive cntrl_scroll_x">
+                        
+                            <table class="table table-bordered">
+                                <tr [dragula]='"bag-one"' [dragulaModel]="group1" id="left">
+                                    <td class="cntrl_col" *ngFor="let tb of group1">
+                                        <div class="col_div">
+                                            <span class="col_img">
+                                                <img src="./assets/images/crt-controls/{{tb.img}}.png" alt="">
+                                            </span>
+                                            <span class="col_lbl">{{tb.label}}</span>
+                                        </div>
+                                    </td>
+                                   
+                                </tr>
+                            </table>
+                        </div>
+    
+                    </div> -->
+    
+    
+    <div class="row page_content cmn_info_wrap">
+        <div class="framework1 container-fluid">
+            <div class="detail_wrapper">
+                <div class="detail_nav_menu">
+                    <div class="company_details">
+    
+                        <!-- <form #myForm="ngForm"> -->
+                        <div class="row">
+    
+                            <!-- <div [dragula]='"bag-one"' [dragulaModel]="group1" id="left">
+                                              
+                                                <span *ngFor="let tb of group1">
+                                                        <ng-container *ngIf="tb.type!==undefined">
+                                                   <strong> {{tb.type}}</strong>
+                                                </ng-container>
+                                            </span>
+                                            &nbsp;
+                                                
+                                            </div> -->
+    
+    
+                                            
+                            <div [dragula]='"bag-one"' [dragulaModel]="Textboxes" id="right">
+                                <div *ngFor="let tb of Textboxes;let idx=index">
+                                    <ng-container *ngIf="tb!==undefined">
+    
+    
+    
+                                        <ng-container *ngIf="tb.type == 'textbox'">
+    
+                                            <div [attr.data-id]="idx" class="col-md-6 col-sm-6 col-xs-12 element_box klvrn_col {{tb.label_present?'':'wdt_label'}}">
+                                                    <ng-container *ngIf="tb.label_present == true">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 label_element">
+                                                                <label class="lbl_hdr">Enter {{tb.placeholder}}</label>
+                                                                
+                                                            </div>
+                                                        </ng-container>
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx)" data-target="#input_control_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>
+    
+                                                <input [name]="tb.id" class="cmn_input" [placeholder]="tb.placeholder | translate" [value]="tb.values[0]" [id]="tb.id" [required]="tb.validation.is_required?true:null">
+                                                <ng-container *ngIf="tb.values[0]=='' && is_submit && tb.validation.is_required">
+                                                    <div>{{tb.validation.val_msg}}</div>
+                                                </ng-container>
+    
+                                            </div>
+                                        </ng-container>
+    
+                                       
+                                        <ng-container *ngIf="tb.type == 'textarea'">
+    
+                                            <div [attr.data-id]="idx" class="col-md-6 col-sm-6 col-xs-12 element_box klvrn_col {{tb.label_present?'':'wdt_label'}}">
+                                                    <ng-container *ngIf="tb.label_present == true">
+                                                        <div class="col-md-6 col-sm-6 col-xs-12 label_element">
+                                                            <label class="lbl_hdr">Enter Here</label>
+                                                            
+                                                        </div>
+                                                    </ng-container>
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx)" data-target="#input_control_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>
+    
+                                                <textarea [name]="tb.id" class="cmn_input" [placeholder]="tb.placeholder | translate" [value]="tb.values[0]" [id]="tb.id" [required]="tb.validation.is_required?true:null"></textarea>
+                                                <ng-container *ngIf="tb.values[0]=='' && is_submit && tb.validation.is_required">
+                                                    <div>{{tb.validation.val_msg}}</div>
+                                                </ng-container>
+    
+                                            </div>
+                                        </ng-container>
+    
+    
+                                        <ng-container *ngIf="tb.type == 'select'">
+                                            <div [attr.data-id]="idx" class="col-md-6 col-sm-6 col-xs-12 element_box klvrn_col {{tb.label_present?'':'wdt_label'}}">
+                                                    <ng-container *ngIf="tb.label_present == true">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 label_element">
+                                                                <label class="lbl_hdr">Enter Here</label>
+                                                                
+                                                            </div>
+                                                        </ng-container>
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx)" data-target="#input_control_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>
+                                                <ng-container *ngIf="tb.type == 'textbox'">
+                                                    <input [name]="tb.id" class="cmn_input" [placeholder]="tb.placeholder | translate" [value]="tb.values[0]" [id]="tb.id">
+                                                </ng-container>
+    
+                                                <label>
+                                                    <select [name]="tb.id" class="cmn_input" [id]="tb.id">
+                                                        <option *ngFor="let aob of tb.values" [ngValue]="aob" translate>{{aob}}</option>
+                                                    </select>
+                                                </label>
+                                                <ng-container *ngIf="tb.values[0]=='' && is_submit && tb.validation.is_required">
+                                                    <div>{{tb.validation.val_msg}}</div>
+                                                </ng-container>
+    
+    
+                                            </div>
+                                        </ng-container>
+    
+                                        <ng-container *ngIf="tb.type == 'password'">
+                                            <div [attr.data-id]="idx" class="col-md-6 col-sm-6 col-xs-12 element_box klvrn_col {{tb.label_present?'':'wdt_label'}}">
+                                                    <ng-container *ngIf="tb.label_present == true">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 label_element">
+                                                                <label class="lbl_hdr">Enter Here</label>
+                                                                
+                                                            </div>
+                                                        </ng-container>
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx)" data-target="#input_control_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>
+    
+    
+                                                <div class="dtl_row">
+                                                    <div class="input-group">
+                                                        <input class="cmn_input password" [id]="tb.id" [placeholder]="tb.placeholder | translate" type="password">
+                                                        <span class="input-group-addon custom_icn">
+                                                            <span class="fa fa-lock"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <ng-container *ngIf="tb.values[0]=='' && is_submit && tb.validation.is_required">
+                                                    <div>{{tb.validation.val_msg}}</div>
+                                                </ng-container>
+    
+                                            </div>
+    
+                                        </ng-container>
+                                     
+                                        <ng-container *ngIf="tb.type == 'text_label'">
+                                            <div [attr.data-id]="idx" class="col-md-6 col-sm-6 col-xs-12 element_box klvrn_col {{tb.label_present?'':'wdt_label'}}">
+                                               
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx,'lbl')" data-target="#input_label_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>
+                                                <div class="dtl_row">
+                                                    <label class="lbl_hdr">{{tb.lnames[0] | translate:param}}</label>
+                                                    <div class="input-group">
+                                                        <input class="cmn_input" [placeholder]="tb.placeholder | translate" type="text" [value]="tb.values[0]">
+                                                        <span class="input-group-addon custom_icn">
+                                                            <span class="fa fa-address-card"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <ng-container *ngIf="tb.values[0]=='' && is_submit && tb.validation.is_required">
+                                                    <div>{{tb.validation.val_msg}}</div>
+                                                </ng-container>
+    
+    
+    
+                                            </div>
+                                        </ng-container>
+                                        <ng-container *ngIf="tb.type == 'datepicker'">
+                                            <div [attr.data-id]="idx" class="col-md-6 col-sm-6 col-xs-12 element_box klvrn_col {{tb.label_present?'':'wdt_label'}}">
+                                                    <ng-container *ngIf="tb.label_present == true">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 label_element">
+                                                                <label class="lbl_hdr">Enter Here</label>
+                                                                
+                                                            </div>
+                                                        </ng-container>
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx)" data-target="#input_label_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>
+                                                <!-- <div class="dtl_row klvrn_dt_picker">
+                                                                    <label [id]="tb.lids[0]" class="tb.lclasses[0]">{{tb.lnames[0]}} </label>
+                                                                    <div [id]="tb.id" class="input-group date">
+                                                                        <input type="text" class="cmn_input" [value]="tb.values[0]">
+                                                                        <span class="input-group-addon">
+                                                                            <span class="fa fa-calendar"></span>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <ng-container *ngIf="tb.values[0]=='' && is_submit && tb.validation.is_required">
+                                                                    <div>{{tb.validation.val_msg}}</div>
+                                                                </ng-container> -->
+                                                <div class="col-sm-12 col-md-12 col-xs-12">
+                                                      <!--  <label class="lbl_hdr">{{tb.lnames[0] | translate:param}}</label>   -->                                                 
+                                                    <ngx-date-picker [(selectedDate)]="dateExample"></ngx-date-picker>
+                                                </div>
+                                                <ng-container *ngIf="tb.values[0]=='' && is_submit && tb.validation.is_required">
+                                                    <div>{{tb.validation.val_msg}}</div>
+                                                </ng-container>
+    
+                                            </div>
+                                        </ng-container>
+                                        <ng-container *ngIf="tb.type == 'timepicker'">
+                                            <div [attr.data-id]="idx" class="col-md-6 col-sm-6 col-xs-12 element_box klvrn_col {{tb.label_present?'':'wdt_label'}}">
+                                                    <ng-container *ngIf="tb.label_present == true">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 label_element">
+                                                                <label class="lbl_hdr">Enter Here</label>
+                                                                
+                                                            </div>
+                                                        </ng-container>
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx)" data-target="#input_label_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-xs-12">
+                                                        <!-- <label class="lbl_hdr">{{tb.lnames[0] | translate:param}}</label> -->
+                                                        
+                                                    <ngx-time-picker [(selectedTime)]="timeExample"></ngx-time-picker>
+    
+                                                    <ng-container *ngIf="tb.values[0]=='' && is_submit && tb.validation.is_required">
+                                                        <div>{{tb.validation.val_msg}}</div>
+                                                    </ng-container>
+                                                </div>
+    
+                                            </div>
+                                        </ng-container>
+    
+    
+    
+    
+                                        <ng-container *ngIf="tb.type == 'checkbox'">
+                                            <div [attr.data-id]="idx" class="col-md-3 col-sm-3 col-xs-6 element_box klvrn_col wdt_label">
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                        
+                                                    
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx,'lbl')" data-target="#input_label_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>
+                                                <div class="custom_chk_bx dtl_row">
+                                                    <div class="chk_bx chk_top">
+                                                        <input type="checkbox" [id]="idx" name="" [value]="tb.lnames[0]" [checked]="tb.boolvals[0]">
+                                                        <label [for]="idx">{{tb.lnames[0] | translate:param}}</label>
+                                                    </div>
+                                                </div>
+                                                <ng-container *ngIf="tb.values[0]=='' && is_submit && tb.validation.is_required">
+                                                    <div>{{tb.validation.val_msg}}</div>
+                                                </ng-container>    
+                                            </div>
+                                        </ng-container>
+
+                                        <ng-container *ngIf="tb.type == 'radio'">
+                                            <div [attr.data-id]="idx" class="col-md-3 col-sm-3 col-xs-6 element_box klvrn_col wdt_label">
+                                                   
+                                                
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx,'lbl')" data-target="#input_label_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>
+                                                <div class="dtl_row">
+                                                    <div class="custom_radio">
+                                                        <input type="radio" [id]="idx" [name]="tb.group" [value]="tb.lnames[0]" (click)="clickRad(tb.lnames[0])">
+                                                        <label [for]="idx">{{tb.lnames[0] | translate:param}}</label>
+                                                    </div>
+                                                </div>
+                                                <ng-container *ngIf="tb.values[0]=='' && is_submit && tb.validation.is_required">
+                                                    <div>{{tb.validation.val_msg}}</div>
+                                                </ng-container>
+    
+    
+                                            </div>
+                                        </ng-container>
+    
+    
+    
+                                        <ng-container *ngIf="tb.type == 'switch'">
+                                            <div [attr.data-id]="idx" class="col-md-3 col-sm-3 col-xs-6 element_box klvrn_col wdt_label">
+                                                  
+                                                
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx)" data-target="#input_control_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>
+                                                <div class="col-md-6 col-sm-6 col-xs-12 dtl_row">
+    
+                                                    <div class="tgl_switch">
+                                                        <input type="checkbox" class="tgl" [id]="idx" [value]="tb.lnames[0]" />
+                                                        <label [for]="idx"></label>
+                                                    </div>
+                                                </div>
+    
+                                                <!-- <ng-container *ngIf="tb.values[0]=='' && is_submit && tb.validation.is_required">
+                                                                                            <div>{{tb.validation.val_msg}}</div>
+                                                                                        </ng-container> -->
+    
+                                            </div>
+                                        </ng-container>
+    
+    
+    
+                                       
+    
+    
+                                        <ng-container *ngIf="tb.type == 'upload'">
+                                            
+                                            <div [attr.data-id]="idx" class="col-md-6 col-sm-6 col-xs-12 element_box wdt_label">
+                                                    <ng-container *ngIf="tb.label_present == true">
+                                                            <div class="col-md-6 col-sm-6 col-xs-12 label_element">
+                                                                <label class="lbl_hdr">Enter Here</label>
+                                                                
+                                                            </div>
+                                                        </ng-container>
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx)" data-target="#input_control_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>
+    
+                                                <div class="col-md-6 col-sm-6 col-xs-12 dtl_row">
+                                                    <div class="upload">
+                                                        <div class="Uploadbtn">
+                                                            <input type="file" class="input-upload" (change)="fileEvent($event)" />
+                                                            <span>
+                                                                <i class="fa fa-upload" aria-hidden="true"></i>
+                                                            </span>
+                                                        </div>
+                                                        <label class="upld_lbl">Add Document</label>
+                                                    </div>
+                                                </div>
+    
+    
+                                            </div>
+                                        </ng-container>
+                                    
+                                        
+    
+                                        <ng-container *ngIf="tb.type == 'twitter'">
+                                            <div [attr.data-id]="idx" class="col-md-6 col-sm-6 col-xs-12 element_box klvrn_col wdt_label">
+                                                    
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx)" data-target="#input_control_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-2 col-xs-2 social_col">
+                                                        <div class="social_icon twitter">
+                                                            <i class="fa fa-twitter"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-10 col-sm-10 col-xs-10 social_input">
+                                                        <input class="cmn_input" [placeholder]="tb.placeholder | translate" [value]="tb.values[0]" [id]="tb.id">
+                                                    </div>
+    
+                                                </div>
+    
+                                            </div>
+                                        </ng-container>
+    
+                                        <ng-container *ngIf="tb.type == 'fbook'">
+                                            <div [attr.data-id]="idx" class="col-md-6 col-sm-6 col-xs-12 element_box klvrn_col wdt_label">
+                                               
+                                                    
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx)" data-target="#input_control_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-2 col-xs-2 social_col">
+                                                        <div class="social_icon fb">
+                                                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-10 col-sm-10 col-xs-10 social_input">
+                                                        <input class="cmn_input" [placeholder]="tb.placeholder | translate" [id]='tb.id' [value]="tb.values[0]">
+                                                    </div>
+    
+                                                </div>
+                                            </div>
+                                        </ng-container>
+    
+    
+    
+                                        <ng-container *ngIf="tb.type == 'linkedin'">
+                                            <div [attr.data-id]="idx" class="col-md-6 col-sm-6 col-xs-12 element_box klvrn_col wdt_label">
+                                                   
+                                              
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx)" data-target="#input_control_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-2 col-xs-2 social_col">
+                                                        <div class="social_icon linked_in">
+                                                            <i class="fa fa-linkedin" aria-hidden="true"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-10 col-sm-10 col-xs-10 social_input">
+                                                        <input class="cmn_input" [placeholder]="tb.placeholder | translate" [id]="tb.id" [value]='tb.values[0]'>
+                                                    </div>
+    
+                                                </div>
+                                            </div>
+                                        </ng-container>
+    
+                                        <ng-container *ngIf="tb.type == 'gplus'">
+                                            <div [attr.data-id]="idx" class="col-md-6 col-sm-6 col-xs-12 element_box klvrn_col wdt_label">
+                                                   
+                                            
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx)" data-target="#input_control_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-2 col-xs-2 social_col">
+                                                        <div class="social_icon g__plus">
+                                                            <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-10 col-sm-10 col-xs-10 social_input">
+                                                        <input class="cmn_input" [placeholder]="tb.placeholder | translate" [id]="tb.id" [value]="tb.values[0]">
+                                                    </div>
+    
+                                                </div>
+                                            </div>
+                                        </ng-container>
+    
+                                        <ng-container *ngIf="tb.type=='newLine'">
+                                                <div class="action-ui" id="tour-action-ui-id">
+                                                        <span class="actions">
+                                                            <a class="clone" (click)="cloneElement(idx)">
+                                                                <i class="fa fa-clone">
+                                                                </i>
+                                                                <span class="tooltip">Clone</span>
+                                                            </a>
+                                                        </span>
+                                                        <span class="actions">
+                                                            <a class="edit_btn" (click)="editElement(idx)" data-target="#input_control_Modal" data-toggle="modal">
+                                                                <i class="fa fa-edit"></i>
+                                                                <span class="tooltip">Edit</span>
+                                                            </a>
+                                                        </span>
+                                                        <span class="actions">
+                                                            <a class="delel" (click)="delElement(idx)">
+                                                                <i class="fa fa-trash-o">
+                                                                </i>
+                                                                <span class="tooltip">Delete</span>
+                                                            </a>
+                                                        </span>
+                                                        <!-- <span class="actions">
+                                                            <a class="" (click)="resetElement(idx)">
+                                                                <i class="fa fa-refresh"></i>
+                                                                <span class="tooltip">Reset</span>
+                                                            </a>
+                                                        </span> -->
+                                                    </div>
+            
+                                            <div class="clearfix"></div>
+                                            </ng-container>
+                                           
+                                    <ng-container *ngIf="tb.type=='label'">
+                                            <div class="col-md-6 col-sm-6 col-xs-12 label_element">
+
+                                                    <label class="lbl_hdr">Enter Here</label>
+                                                    
+                                                </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="tb.type=='btn'">
+                                            <div [attr.data-id]="idx" class="col-md-6 col-sm-6 col-xs-12 element_box klvrn_col wdt_label">
+
+                                            <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx)" data-target="#input_control_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>       
+                                    <button type="button" class="btn btn1" [routerLink] ='tb.goto'>
+                                            <label>
+                                                {{tb.values[0]}}
+                                            </label>
+                                        </button>
+                                            </div>
+                                            
+                                    </ng-container>
+
+
+                                    <ng-container *ngIf="tb.type=='grid'">
+                                            <div [attr.data-id]="idx" class="col-md-12 col-sm-12 col-xs-12 element_box klvrn_col wdt_label">
+
+                                            <div class="action-ui" id="tour-action-ui-id">
+                                                    <span class="actions">
+                                                        <a class="clone" (click)="cloneElement(idx)">
+                                                            <i class="fa fa-clone">
+                                                            </i>
+                                                            <span class="tooltip">Clone</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="edit_btn" (click)="editElement(idx)" data-target="#input_control_Modal" data-toggle="modal">
+                                                            <i class="fa fa-edit"></i>
+                                                            <span class="tooltip">Edit</span>
+                                                        </a>
+                                                    </span>
+                                                    <span class="actions">
+                                                        <a class="delel" (click)="delElement(idx)">
+                                                            <i class="fa fa-trash-o">
+                                                            </i>
+                                                            <span class="tooltip">Delete</span>
+                                                        </a>
+                                                    </span>
+                                                    <!-- <span class="actions">
+                                                        <a class="" (click)="resetElement(idx)">
+                                                            <i class="fa fa-refresh"></i>
+                                                            <span class="tooltip">Reset</span>
+                                                        </a>
+                                                    </span> -->
+                                                </div>       
+                                    <grid-list></grid-list>
+                                            </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="tb.type=='tree'">
+                                            <div [attr.data-id]="idx" class="col-md-12 col-sm-12 col-xs-12 element_box klvrn_col wdt_label">
+
+                                                    <div class="action-ui" id="tour-action-ui-id">
+                                                            <span class="actions">
+                                                                <a class="clone" (click)="cloneElement(idx)">
+                                                                    <i class="fa fa-clone">
+                                                                    </i>
+                                                                    <span class="tooltip">Clone</span>
+                                                                </a>
+                                                            </span>
+                                                            <span class="actions">
+                                                                <a class="edit_btn" (click)="editElement(idx)" data-target="#input_control_Modal" data-toggle="modal">
+                                                                    <i class="fa fa-edit"></i>
+                                                                    <span class="tooltip">Edit</span>
+                                                                </a>
+                                                            </span>
+                                                            <span class="actions">
+                                                                <a class="delel" (click)="delElement(idx)">
+                                                                    <i class="fa fa-trash-o">
+                                                                    </i>
+                                                                    <span class="tooltip">Delete</span>
+                                                                </a>
+                                                            </span>
+                                                            <!-- <span class="actions">
+                                                                <a class="" (click)="resetElement(idx)">
+                                                                    <i class="fa fa-refresh"></i>
+                                                                    <span class="tooltip">Reset</span>
+                                                                </a>
+                                                            </span> -->
+                                                        </div> 
+                                                        <div class="col-sm-12 col-xs-12 col-md-12">     
+                                                           <!-- <div class="col-md-12 padd0"> -->
+    <!-- <tree [tree]="PMItree" (menuItemSelected)="handleMenuItemSelect($event)" (nodeRemoved)="handleRemoved($event, 'PMI')" (nodeCreated)="handleCreated($event, 'PMI')"
+    (nodeRenamed)="handleRenamed($event, 'PMI')"></tree> -->
+<!-- </div> -->
+<!-- <div class="col-md-12 padd0"> -->
+<!-- <tree [tree]="PBItree" (menuItemSelected)="handleMenuItemSelect($event)" (nodeRemoved)="handleRemoved($event, 'PBI')" (nodeCreated)="handleCreated($event, 'PBI')"
+(nodeRenamed)="handleRenamed($event, 'PBI')"></tree> -->
+<!-- </div> -->
+
+
+                                                        </div>
+                                            </div>
+                                    </ng-container>
+
+  
+
+                                    </ng-container>
+                                </div>
+    
+                            </div>
+    
+    
+    
+                        </div>
+    
+    
+                        <div class="detail_btn frmwrk_btn" style="position:relative" *ngIf="Textboxes.length!==0">
+                           
+    
+                            <button type="button" class="btn1 btn save_btn" (click)="openDialog()" data-toggle="modal" data-target="#input_control_URL">
+                                <label>
+                                    Save
+                                </label>
+                            </button>
+                            <!-- <button type="submit" class="btn2 btn  next_btn" (click)="nextData()">
+                                <label>
+                                    Next
+                                </label>
+                            </button> -->
+    
+                        </div>
+                        <!-- </form> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="clearfix">
+    </div>
+    <div class="clearfix">
+    </div>
+    
+    <div class="modal fade control_mdl" id="input_control_URL" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+    
+                <div class="modal_tabs add_control">
+                    <div class="modal-header">
+                        <button type="button" class="mdl_close" data-dismiss="modal">
+                            &times;
+                        </button>
+                        <h4>
+                            <label class="modal-title">Edit Form URL</label>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+    
+    
+                        <div class="row col_outer cntrl_info">
+                            <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                <label class="lbl_hdr">
+                                    Form Name
+                                </label>
+                                <input class="cmn_input" type="text" [(ngModel)]="formName" #formname>
+                            </div>
+    
+    
+                            <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                <label class="lbl_hdr">
+                                    Form Submit URL (start with "/")
+                                </label>
+                                <input class="cmn_input" type="text" [(ngModel)]="formUrl" #formurl>
+                            </div>
+                        </div>
+    
+                    </div>
+                    <div class="modal-footer modal_btn">
+                        <button type="button" class="btn sv_btn" (click)="saveData()">
+                            <label>
+                                Save
+                            </label>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade control_mdl" id="input_control_Modal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+    
+                <div class="modal_tabs add_control">
+                    <div class="modal-header">
+                        <button type="button" class="mdl_close" data-dismiss="modal">
+                            &times;
+                        </button>
+                        <h4>
+                            <label class="modal-title">Edit Control</label>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+    
+                        <div class="row col_outer cntrl_info">
+                            <div class="col-md-4 col-xs-12 lbl_cntrl" style="display:none">
+                                <label class="lbl_hdr">
+                                    Control Parent ID
+                                </label>
+                                <input class="cmn_input" type="text" #ctpar>
+                            </div>
+                            <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                <label class="lbl_hdr">
+                                    Control Id
+                                </label>
+                                <input class="cmn_input" [(ngModel)] = "cntid" type="text" #ctid>
+                            </div>
+                            <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                <label class="lbl_hdr">
+                                    Control Value
+                                </label>
+                                <input class="cmn_input" [(ngModel)] = "cntval" type="text" #ctval>
+                            </div>
+                            <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                <label class="lbl_hdr">
+                                    Control Placeholder
+                                </label>
+                                <input class="cmn_input" [(ngModel)] = "cntph" type="text" #ctph>
+                            </div>
+                            <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                <label class="lbl_hdr">Radio Group (for radio btn only)</label>
+                                <input class="cmn_input" [(ngModel)]="cntrg" type="text" #ctrg>
+                            </div>
+                            <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                <label class="lbl_hdr">Goto URL (for buttons only)</label>
+                                <input class="cmn_input" [(ngModel)] = "cntgoto" type="text" #ctgoto>
+                            </div>
+                            <!-- <div class="col-md-4 col-xs-12 custom_chk_bx">
+                                <div class="chk_bx chk_top">
+                                    <input type="checkbox" id="vldtn_btn1" #ctvbx>
+                                    <label for="vldtn_btn1">
+                                        Validation Required
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-12 hide_lbl">
+                                <label class="lbl_hdr">
+                                    Validation Message
+                                </label>
+                                <input class="cmn_input" type="text" #ctvmsg>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="modal-footer modal_btn">
+                        <button type="button" class="btn sv_btn" (click)="saveCntrl(ctpar.value,ctid.value,ctval.value,ctph.value,ctrg.value,ctgoto.value)">
+                            <label>
+                                Save
+                            </label>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- label Modal -->
+    
+    <div class="modal fade control_mdl" id="input_label_Modal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+    
+                <div class="modal_tabs add_label">
+                    <div class="modal-header">
+                        <button type="button" class="mdl_close" data-dismiss="modal">&times;</button>
+                        <h4>
+                            <label class="modal-title">Edit Label</label>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+    
+                        <div class="row col_outer">
+                            <div class="col-md-4 lbl_cntrl">
+                                <label class="lbl_hdr">Label ID</label>
+                                <input class="cmn_input" [(ngModel)]="lblid" type="text" #labelid>
+                            </div>
+                            <div class="col-md-4 lbl_cntrl">
+                                <label class="lbl_hdr">Label Name</label>
+                                <input class="cmn_input" [(ngModel)]="lblnm" type="text" #labelnm>
+                            </div>
+                            <div class="col-md-4 lbl_cntrl">
+                                <label class="lbl_hdr">Label Class</label>
+                                <input class="cmn_input" [(ngModel)]="lblclass" type="text" #labelclass>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer modal_btn">
+                        <button type="button" class="btn nx_btn" (click)="saveLabel(labelid.value,labelnm.value,labelclass.value)">
+                            <label>Next</label>
+                        </button>
+    
+                        <!-- <button type="button" class="btn sv_btn"><label>Save</label></button> -->
+                    </div>
+                </div>
+                <div class="modal_tabs add_control">
+                    <div class="modal-header">
+                        <button type="button" class="mdl_close" data-dismiss="modal">&times;</button>
+                        <h4>
+                            <label class="modal-title">Edit Controls</label>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="div_hdr row">
+                            <div class="col-md-12">
+                                <h4>
+                                    <label>Select Control</label>
+                                </h4>
+                            </div>
+                        </div>
+    
+                        <div class="row col_outer cntrl_info">
+                            <div class="col-md-4 col-xs-12 lbl_cntrl" style="display:none">
+                                <label class="lbl_hdr">Parent Control Id</label>
+                                <input id="cntrl_parent" type="text" #cntrlpar>
+                            </div>
+                            <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                <label class="lbl_hdr">Control Id</label>
+                                <input class="cmn_input" [(ngModel)]="cntid" type="text" #cntrlid>
+                            </div>
+    
+                            <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                <label class="lbl_hdr">Control Value</label>
+                                <input class="cmn_input" [(ngModel)]="cntval" type="text" #cntrlval>
+                            </div>
+                            <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                <label class="lbl_hdr">Control Placeholder</label>
+                                <input class="cmn_input" [(ngModel)]="cntph" type="text" #cntrlph>
+                            </div>
+                            <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                <label class="lbl_hdr">Radio Group (for radio button only)</label>
+                                <input class="cmn_input" [(ngModel)]="cntrg" type="text" #cntrlrg>
+                            </div>
+                            <!-- <div class="col-md-4 col-xs-12 custom_chk_bx">
+                                <div class="chk_bx chk_top">
+                                    <input type="checkbox" id="vldtn_btn1" #valreq>
+                                    <label for="vldtn_btn1">Validation Required</label>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-12 hide_lbl">
+                                <label class="lbl_hdr">Validation Message</label>
+                                <input class="cmn_input" type="text" #valmsg>
+                            </div>
+     -->
+                        </div>
+                    </div>
+                    <div class="modal-footer modal_btn">
+    
+                        <button type="button" class="btn sv_btn" (click)="saveCntrl(cntrlpar.value,cntrlid.value,cntrlval.value,cntrlph.value,cntrlrg.value,'')">
+                            <label>Save</label>
+                        </button>
+                    </div>
+                </div>
+    
+    
+            </div>
+        </div>
+    </div>
+    <div class="clearfix">
+    </div>
+    
+    
+    <div class="modal fade control_mdl" id="confirmDialog" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+    
+                <div class="modal_tabs add_control">
+                    <div class="modal-header">
+                        <button type="button" class="mdl_close" data-dismiss="modal">
+                            &times;
+                        </button>
+                        <h4>
+                            <label class="modal-title">Do you want to delete?</label>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+    
+    
+                        <div class="row col_outer cntrl_info">
+                            <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                <button class="btn">Yes</button>
+                            </div>
+    
+    
+                            <div class="col-md-4 col-xs-12 lbl_cntrl">
+                                <button class="btn">No</button>
+                            </div>
+                        </div>
+    
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </div>

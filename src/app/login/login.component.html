@@ -1,0 +1,71 @@
+
+
+<div class="login_bg">
+  <!-- login section -->
+  <div class="login_section">
+      <div class="left_sec left">
+
+          <div class="left_txt">
+              <div class="container-fluid">
+                 
+              </div>
+          </div>
+      </div>
+      <div class="right_sec right">
+          <div class="container-fluid">
+              <div class="logo">
+                  <a href="#"><img src="./assets/images/sci-key-logo.png" alt="" /></a>
+              </div>
+              <div class="welcome_txt">
+                  <h2>
+                      <label>
+                          <div >
+                              <span class="highlight" translate>Welcome back!</span><span translate>Please login to your account.</span>
+                          </div> </label>
+                  </h2>
+              </div>
+              <span *ngIf="!invalidLogin" style="color:red;font-size:15px"><b>Invalid Credentials</b></span>
+              <div class="login_input">
+                  <form [formGroup]="form" name="form">
+                          <div class="form-group row" [ngClass]="{'has-error': (!username.valid && username.touched), 'has-success': (username.valid && username.touched)}">
+                      <div class="field">
+                      <input [formControl]="username" type="text" name="username" id="username" class="username" placeholder="{{'Username' | translate}}" [(ngModel)]="uname">
+                  </div>
+                          </div>
+                          <div class="form-group row" [ngClass]="{'has-error': (!password.valid && password.touched), 'has-success': (password.valid && password.touched)}">                            
+                  <div class="field">
+                      <input [formControl]="password" type="password" name="password" id="password" class="password" placeholder="{{'Password' | translate}}" [(ngModel)]="pass">
+                  </div>
+                          </div>       
+                  <div class="sign_in">
+                      <span class="frgt_pwd left"><a href="#"><label translate>Forgot Password</label></a></span>
+                      <span class="btn_sign_in right">
+                          <button type="submit" [disabled]="!form.valid" class="btn sign_in_btn" (click)="onSubmit()">
+                          
+                              <label>
+                                  <span translate>Sign In</span><span class="sign_in_img">
+                                      <img src="./assets/images/login/sign-in-img.png" />
+                                  </span>
+                              </label>
+                          </button>
+
+                      </span>
+                      
+                      <div class="clearfix"></div>
+                  </div>
+                  </form>
+                  <div class="need_acnt">
+                      <a href="#"><label translate>Need An Account?</label></a>
+                  </div>
+              </div>
+
+          </div>
+          <div class="login_footer">
+              <h4><label translate> © 2017 Sci-Key. A venture of <a href="#" translate> SRKay </a> Consulting Group LLP. All Rights Reserved.</label></h4>
+          </div>
+
+      </div>
+      <div class="clearfix"></div>
+  </div>
+  <!-- end login section -->
+</div>

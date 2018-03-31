@@ -1,0 +1,126 @@
+<div class="main-div">
+  <ng-container *ngFor="let card of cards;let idx=index">
+    <ng-container *ngIf="card!==null && card!==undefined">
+  <mat-card class="z-depth center" flex="20" >
+      <mat-card-header>
+          <mat-card-title>
+          
+                  <span class="actions" style="background-color:black">
+                      <a class="clone" (click)="cloneElement(idx)">
+                          <i class="fa fa-clone">
+                          </i>
+                          <span class="tooltip">Clone</span>
+                      </a>
+                  </span>
+                  <span class="actions" style="background-color:black">
+                      <a class="edit_btn" (click)="editElement(idx)" data-target="#input_control_Modal" data-toggle="modal">
+                          <i class="fa fa-edit"></i>
+                          <span class="tooltip">Edit</span>
+                      </a>
+                  </span>
+                  <span class="actions" style="background-color:black">
+                      <a class="delel" (click)="delElement(idx)">
+                          <i class="fa fa-trash-o">
+                          </i>
+                          <span class="tooltip">Delete</span>
+                      </a>
+                  </span>
+                  <!-- <span class="actions">
+                      <a class="" (click)="resetElement(idx)">
+                          <i class="fa fa-refresh"></i>
+                          <span class="tooltip">Reset</span>
+                      </a>
+                  </span> -->
+
+
+          </mat-card-title>
+        
+        </mat-card-header>
+        <input class="pnl_inp" type='text' [(ngModel)] = "card.text">
+      </mat-card>
+  </ng-container>
+  </ng-container>
+ 
+</div>
+<button class='btn btn1' data-target="#input_control_Form" data-toggle="modal">Save
+  </button>
+
+<div class="modal fade control_mdl" id="input_control_Modal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal_tabs add_control">
+                <div class="modal-header">
+                    <button type="button" class="mdl_close" data-dismiss="modal">
+                        &times;
+                    </button>
+                    <h4>
+                        <label class="modal-title">Assign link</label>
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="row col_outer cntrl_info">
+                        <div class="col-md-4 col-xs-12 lbl_cntrl">
+                            <label class="lbl_hdr">
+                              Link URL
+                            </label>
+                            <input class="cmn_input" type="text" [(ngModel)]="formLink">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer modal_btn">
+                    <button type="button" class="btn sv_btn" (click)="_saveLink()">
+                        <label>
+                            Save
+                        </label>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade control_mdl" id="input_control_Form" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal_tabs add_control">
+                <div class="modal-header">
+                    <button type="button" class="mdl_close" data-dismiss="modal">
+                        &times;
+                    </button>
+                    <h4>
+                        <label class="modal-title">Edit Form Name</label>
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="row col_outer cntrl_info">
+                        <div class="col-md-4 col-xs-12 lbl_cntrl">
+                            <label class="lbl_hdr">
+                              Form Name
+                            </label>
+                            <input class="cmn_input" type="text" [(ngModel)]="formName">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer modal_btn">
+                    <button type="button" class="btn sv_btn" (click)="_saveData()">
+                        <label>
+                            Save
+                        </label>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

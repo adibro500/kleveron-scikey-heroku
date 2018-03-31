@@ -1,0 +1,76 @@
+<!-- <tree-root [nodes]="nodes" [options]='options'>
+        <ng-template #treeNodeWrapperTemplate let-node let-index="index">
+          <div class="node-wrapper" [style.padding-left]="node.getNodePadding()">
+            <tree-node-expander [node]="node"></tree-node-expander>
+            <div class="node-content-wrapper"
+              [class.node-content-wrapper-active]="node.isActive"
+              [class.node-content-wrapper-focused]="node.isFocused"
+              (click)="node.mouseAction('click', $event)"
+              (dblclick)="node.mouseAction('dblClick', $event)"
+              (contextmenu)="node.mouseAction('contextMenu', $event)"
+              (treeDrop)="node.onDrop($event)"
+              [treeAllowDrop]="node.allowDrop"
+              [treeDrag]="node"
+              [treeDragEnabled]="node.allowDrag()"
+              >
+      
+              <tree-node-content [node]="node" [index]="index"></tree-node-content>
+            </div>
+          </div>
+        </ng-template>
+      </tree-root>
+
+      <button type="button" class="btn btn1" [routerLink]="['/parent/survey']">
+        <label>Save & Go</label>
+    </button> -->
+    <div class="col-md-12 card" id="catContainer">
+      <div class="col-md-12">
+        <div class="col-md-12">
+          <!-- <h3>Define the question categories and their weightages</h3> -->
+        </div>    
+    <form #myForm="ngForm">
+      <div class="col-md-12" *ngIf="categoryNodes && !disableContent">
+        <tree-root [nodes]="categoryNodes">
+          <ng-template #treeNodeTemplate let-node let-index="index">
+            <div class="col-md-4 col-sm-4">
+              <input id="{{'categoryNameValue' + node.data.id}}" type="text" placeholder="Enter category name" [(ngModel)]="node.data.name"
+                required #categoryName="ngModel" [ngModelOptions]="{standalone: true}" />
+              <div *ngIf="categoryName.errors && (categoryName.dirty || categoryName.touched)">
+                <div *ngIf="categoryName.errors.required" class="error alert-danger">Category name is required </div>
+              </div>
+            </div>
+            <div class="col-md-5 col-sm-5">
+              <input type="number" id="{{'categoryWeightage' + node.data.id}}" [(ngModel)]="node.data.weightage" required #categoryWeightage="ngModel"
+                [ngModelOptions]="{standalone: true}" />
+              <div *ngIf="categoryWeightage.errors && (categoryWeightage.dirty || categoryWeightage.touched)">
+                <div *ngIf="categoryWeightage.errors.required" class="error alert-danger">Category weightage is required </div>
+              </div>
+            </div>&nbsp;
+            <!-- <div class="col-sm-4 col-md-4"> -->
+              <label><i id="{{'addCategory' + node.data.id}}" (click)="addCategoryChildren(node,treeNodeTemplate)" class="fa fa-plus-circle"></i></label>
+              <label><i id="{{'removeCategory' + node.data.id}}" (click)="deleteCategory(node,treeNodeTemplate)" class="fa fa-trash"></i></label>
+            <!-- </div> -->
+          </ng-template>
+        </tree-root>
+        <label (click)="addCategory()"><i id="addCategory0" class="fa fa-plus-circle">Add category</i></label>
+      </div>
+      <div class="col-md-12" *ngIf="categoryNodes && disableContent">
+        <tree-root [nodes]="categoryNodes">
+          <ng-template #treeNodeTemplate let-node let-index="index">
+            {{node.data.name}} ({{node.data.weightage}})
+          </ng-template>
+        </tree-root>
+      </div>
+      <div class="col-md-12 marg-tb10">
+        <div class="col-md-2"></div>
+        <div class="col-md-3">
+          <!-- <button id="categoryNext" class="btn" (click)="saveCategoryDetails()">Next</button> -->
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+    <button type="button" class="btn btn1" (click)="saveToLocal()" [routerLink]="['/parent/survey']">
+      <label>Save & Go</label>
+  </button>

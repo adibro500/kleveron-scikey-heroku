@@ -1,0 +1,17 @@
+.center{
+    width: 50%;
+    margin: 10px auto;
+  }
+  .pnl_inp
+{
+    border: 0;
+    background: transparent !important;
+}
+
+  .main-div{
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:20px;
+  }
