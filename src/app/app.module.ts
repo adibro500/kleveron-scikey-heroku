@@ -104,7 +104,7 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production })
   ],
   schemas: [NO_ERRORS_SCHEMA],
   exports: [ReactiveFormsModule, JfSurveyEditorComponent],
