@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, DoCheck, ViewEncapsulation } from '@angular/core';
-import * as SurveyEditor from '@jobFitment/surveyjs-editor';
-import * as Survey from '@jobFitment/survey-knockout';
+import * as SurveyEditor from 'surveyjs-editor';
+import * as Survey from 'survey-knockout';
 import { DataService } from './data.service';
 import { Http } from '@angular/http';
 import { RequestOptions, Headers } from '@angular/http';

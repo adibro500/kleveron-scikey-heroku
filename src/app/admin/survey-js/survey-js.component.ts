@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, DoCheck, ViewEncapsulation } from '@angular/core';
-import * as SurveyEditor from '@jobFitment/surveyjs-editor';
-import { OnChanges } from '@angular/core/src/metadata/lifecycle_hooks';
-import * as Survey from '@jobFitment/survey-knockout';
+import * as SurveyEditor from 'surveyjs-editor';
+import { OnChanges } from '@angular/core';
+import * as Survey from 'survey-knockout';
 declare var $: any;
 declare var perfectScrollbar: any;
 declare var height: any;
