@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnChanges, ViewEncapsulation } from '@angular/core';
-import * as Survey from '@jobFitment/survey-knockout';
+import * as Survey from 'survey-knockout';
 
 @Component({
   selector: 'app-surveyjs',
