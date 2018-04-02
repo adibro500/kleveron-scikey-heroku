@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "sw-build": "ng build --prod && node build/fix-sw",
-    "postinstall": "ng build --prod --base-href \"https://adibro500.github.io/kleveron-scikey/\" && node build/fix-sw",
+    "postinstall": "ng build --prod && node build/fix-sw",
     "ng": "ng",
     "start": "node server.js",
     "build": "ng build --prod",
